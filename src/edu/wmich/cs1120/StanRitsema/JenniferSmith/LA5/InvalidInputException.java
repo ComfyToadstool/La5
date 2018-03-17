@@ -6,6 +6,6 @@
 
 package edu.wmich.cs1120.StanRitsema.JenniferSmith.LA5;
 
-public class InavidInputException {
+public class InvalidInputException extends Exception {
 
 }
