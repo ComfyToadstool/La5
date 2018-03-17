@@ -6,6 +6,15 @@
 
 package edu.wmich.cs1120.StanRitsema.JenniferSmith.LA5;
 
-public class CartItem {
+public class CartItem {	
+	
+	/**
+	 * 
+	 * @param quantity
+	 * @throws Exception if user send quantity more than the available quantity in the store 
+	 */
+	public void setQuantity(int quantity) throws … {
 
+	} 
 }
+
