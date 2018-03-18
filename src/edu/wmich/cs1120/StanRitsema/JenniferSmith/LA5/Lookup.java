@@ -21,13 +21,32 @@ public class Lookup {
 	 * @param userName
 	 * @param password
 	 * @return Return the user object if it exist
-	 * @throws An
-	 *             appropriate exception should be thrown for the following
-	 *             scenarios: 1- if username doesn't exist. 2- Password doesn’t
-	 *             exist
+	 * @throws InvalidInputException
+	 *             Exception should be thrown for the following scenarios: 1- if
+	 *             username doesn't exist. 2- Password doesn’t exist
 	 */
-	public User checkLoginAuth(String userName, String password) {
-		return null;
+	public User checkLoginAuth(String userName, String password)
+			throws InvalidInputException {
+
+		for (int i = 0; i < userList.length; i++) {
+
+			if (userList[i].equals(userName)) {
+
+				if (userList[i].equals(userName, password)) {
+
+					return userList[i];
+				}
+
+				else {
+
+					throw new InvalidInputException("Invalid password");
+
+				}
+			}
+		}
+
+		throw new InvalidInputException("Username does not exist");
+
 	}
 
 	/**
@@ -35,23 +54,38 @@ public class Lookup {
 	 * @param password1
 	 * @param password2
 	 * @return
-	 * @throws An
-	 *             appropriate exception should be thrown for the following
-	 *             scenarios: 1. A user is trying to signup using a username
-	 *             that already exists. 2. A user tries to login with a username
-	 *             that doesn’t exist. 3. A user enters the wrong password. 4.
-	 *             When a user enters password a second time, it doesn’t match
-	 *             the first password. 5. If password length is less than 6
-	 *             characters 6. If the password is not valid
+	 * @throws InvalidInputException
+	 *             Exception should be thrown for the following scenarios: 1. A
+	 *             user is trying to signup using a username that already
+	 *             exists. 2. A user tries to login with a username that doesn’t
+	 *             exist. 3. A user enters the wrong password. 4. When a user
+	 *             enters password a second time, it doesn’t match the first
+	 *             password. 5. If password length is less than 6 characters 6.
+	 *             If the password is not valid
 	 * 
 	 */
 	public User checkSignUpAuth(String userName, String password1,
 			String password2) throws InvalidInputException {
-		for ( int i = 0; i < ) {
-			
+		String message = isValidPassword(password1);
+
+		if (message != null) {
+			throw new InvalidInputException(message);
 		}
-		return null;
 		
+		if (!password1.equals(password2)) {
+			throw new InvalidInputException("Passwords don't match");
+
+		}
+
+		for (int i = 0; i < userList.length; i++) {
+
+			if (userList[i].equals(userName)) {
+				throw new InvalidInputException("Username already exists");
+			}
+		}
+		
+		return addUserToTheList(userName, password1);
+
 	}
 
 	/**
@@ -65,7 +99,38 @@ public class Lookup {
 	 *          and returns null if the password is valid
 	 */
 	public String isValidPassword(String password) {
-		return null;
+
+		String message;
+
+		boolean isValid = true;
+		boolean hasDigit = false;
+		boolean hasLower = false;
+		boolean hasUpper = false;
+
+		if (password.length() < 6) {
+			return "Invalid password";
+		}
+
+		for (int i = 0; i < password.length(); i++) {
+
+			if (Character.isDigit(password.charAt(i))) {
+				hasDigit = true;
+			}
+
+			else if (Character.isLowerCase(password.charAt(i))) {
+				hasLower = true;
+			}
+
+			else if (Character.isUpperCase(password.charAt(i))) {
+				hasUpper = true;
+			}
+		}
+
+		if (hasDigit && hasLower && hasUpper) {
+			return null;
+		}
+
+		return "Invalid password";
 	}
 
 	public User[] getUserList() {
@@ -122,9 +187,10 @@ public class Lookup {
 	 * 
 	 */
 	public Item[] loadItems() {
+		
 		Item[] itemList = new Item[10];
 		
-		// Constructor’s arguments:(title,quantity, price)
+		// Constructor’s arguments:(title, quantity, price)
 		itemList[0] = new Item(1, "Tulip", 10, 3.00);
 		itemList[1] = new Item(2, "Calla", 15, 3.00);
 		itemList[2] = new Item(3, "Gerbera", 15, 2.00);

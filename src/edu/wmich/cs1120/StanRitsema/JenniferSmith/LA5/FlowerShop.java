@@ -94,7 +94,7 @@ public class FlowerShop {
 					
 				default:
 					
-					throw new InvalidInputException();
+					throw new InvalidInputException("Invalid option");
 				}
 			}
 

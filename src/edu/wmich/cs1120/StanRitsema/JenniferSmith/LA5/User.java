@@ -21,25 +21,37 @@ public class User {
 
 	}
 
-	/**
-	 * 
-	 * @param item
-	 * @param quantity
-	 * @throws an
-	 *             appropriate exception if the user try to add more than three
-	 *             items to the cart list, and if there is a thrown exception
-	 *             from setQuantity method.
-	 */
+	public boolean equals(String name) {
+
+		return (username.equals(name));
+
+	}
+	
+	public boolean equals(String name, String password) {
+
+		return (username.equals(name) && this.password.equals(password));
+
+	}
 
 	public boolean isFull() {
 		return numItems == cartItems.length;
 	}
 
+	/**
+	 * 
+	 * @param item
+	 * @param quantity
+	 * @throws InvalidInputException
+	 *             Exception if the user try to add more than three items to the
+	 *             cart list, and if there is a thrown exception from
+	 *             setQuantity method.
+	 */
+
 	public void addItemToTheLibrary(Item item, int quantity)
 			throws InvalidInputException {
 
 		if (quantity > item.getAvailableQuantity()) {
-			throw new InvalidInputException();
+			throw new InvalidInputException("Not enough items");
 		}
 
 		for (int i = 0; i < numItems; i++) {
@@ -52,10 +64,10 @@ public class User {
 		}
 
 		if (isFull()) {
-			throw new InvalidInputException();
-			
+			throw new InvalidInputException("Cannot have more than 3 items");
+
 		}
-		
+
 		cartItems[numItems] = new CartItem(quantity, item);
 		item.reduceQuantity(quantity);
 		++numItems;

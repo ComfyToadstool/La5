@@ -7,5 +7,8 @@
 package edu.wmich.cs1120.StanRitsema.JenniferSmith.LA5;
 
 public class InvalidInputException extends Exception {
-
+	
+	public InvalidInputException(String message) {
+		super(message);
+	}
 }
