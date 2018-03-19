@@ -28,12 +28,22 @@ public class Item {
 	}
 
 	public String toString() {
-		return id + " " + title + " " + availableQuantity + " " + price;
+		return (getID() + " -  " + getTitle() + ",  " + "Price: $" + getPrice());
 	}
 
 	public int getID() {
 
 		return id;
+	}
+	
+	public String getTitle() {
+		
+		return title;
+	}
+	
+	public double getPrice() {
+		
+		return price;
 	}
 
 	public void reduceQuantity(int quantity) {
