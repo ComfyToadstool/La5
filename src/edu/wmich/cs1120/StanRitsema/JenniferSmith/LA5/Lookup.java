@@ -22,8 +22,9 @@ public class Lookup {
 	 * @param password
 	 * @return Return the user object if it exist
 	 * @throws InvalidInputException
-	 *             Exception should be thrown for the following scenarios: 1- if
-	 *             username doesn't exist. 2- Password doesn’t exist
+	 *             Exception should be thrown for the following scenarios:
+	 *              1- if username doesn't exist.
+	 *              2- Password doesn't exist
 	 */
 	public User checkLoginAuth(String userName, String password)
 			throws InvalidInputException {
@@ -174,7 +175,7 @@ public class Lookup {
 	public User[] createUsers() {
 		User[] list = new User[2];
 
-		// Constructor’s arguments: (id, username, password)
+		// Constructor's arguments: (id, username, password)
 		list[0] = new User(1, "sara", "123");
 		list[1] = new User(2, "adam", "321");
 		return list;
@@ -190,7 +191,7 @@ public class Lookup {
 		
 		Item[] itemList = new Item[10];
 		
-		// Constructor’s arguments:(title, quantity, price)
+		// Constructor's arguments:(title, quantity, price)
 		itemList[0] = new Item(1, "Tulip", 10, 3.00);
 		itemList[1] = new Item(2, "Calla", 15, 3.00);
 		itemList[2] = new Item(3, "Gerbera", 15, 2.00);
