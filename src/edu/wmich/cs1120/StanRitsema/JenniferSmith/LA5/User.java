@@ -5,7 +5,7 @@
  */
 
 package edu.wmich.cs1120.StanRitsema.JenniferSmith.LA5;
-
+//
 public class User {
 
 	private int id;
