@@ -26,6 +26,8 @@ public class CartItem {
 	 */
 	
 	public void setQuantity(int quantity) throws InvalidInputException {
+		
+		
 		this.quantity = quantity;
 	}
 

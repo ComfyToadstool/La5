@@ -46,8 +46,15 @@ public class Item {
 		return price;
 	}
 
-	public void reduceQuantity(int quantity) {
-		availableQuantity -= quantity;
+	public void reduceQuantity(int quantity) throws InvalidInputException {
+		
+		if( availableQuantity >= quantity) {
+			availableQuantity -= quantity;
+		}else {
+			throw new InvalidInputException("This quantity is not available.");
+		}
+		
+		
 		
 	}
 

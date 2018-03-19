@@ -8,6 +8,11 @@ package edu.wmich.cs1120.StanRitsema.JenniferSmith.LA5;
 
 public class InvalidInputException extends Exception {
 	
+	/**
+	 * 
+	 */
+	public static final long serialVersionUID = 1120;
+
 	public InvalidInputException(String message) {
 		super(message);
 	}
