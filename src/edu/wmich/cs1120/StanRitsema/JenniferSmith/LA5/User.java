@@ -26,11 +26,39 @@ public class User {
 		return (username.equals(name));
 
 	}
-	
+
 	public boolean equals(String name, String password) {
 
 		return (username.equals(name) && this.password.equals(password));
 
+	}
+
+	public String toString() {
+
+		String r = "";
+		if (numItems == 0) {
+			return null;
+		}
+		for (int i = 0; i < numItems; i++) {
+			r += cartItems[i] + "\n";
+
+		}
+		return r;
+	}
+
+	public double getTotal() {
+		double total = 0;
+		for (int i = 0; i < numItems; i++) {
+			total += cartItems[i].getTotal();
+		}
+		return total;
+	}
+
+	public String bill() {
+		if(numItems == 0) {
+			return null;
+		}
+		return "Your bill balance is "+ Item.formatter.format(getTotal());
 	}
 
 	public boolean isFull() {
@@ -72,4 +100,6 @@ public class User {
 		item.reduceQuantity(quantity);
 		++numItems;
 	}
+
+	
 }

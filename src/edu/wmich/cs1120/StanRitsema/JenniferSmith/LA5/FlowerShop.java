@@ -38,23 +38,93 @@ public class FlowerShop {
 	}
 
 	public static void shopMenu(Lookup lookup) {
+		while (true) {
+			try {
+				System.out.println("\n1- Flowers List! \n" + "2- My Cart \n"
+						+ "3- Bill \n" + "4- Exit \n"
+						+ "Select one of these options:");
 
-		try {
-			System.out.println(
-					"1- Flowers List! \n" + "2- My Cart \n" + "3- Bill \n"
-							+ "4- Exit \n" + "Select one of these options: \n");
-			int option = sc.nextInt();
-			switch (option) {
-			case 1:
+				int option = sc.nextInt();
+				sc.nextLine();
 				
-			case 2:
-			case 3:
-			case 4:
-			default:
-			}
+				switch (option) {
 
-		} catch (Exception e) {
-			System.err.println(e.getMessage());
+				case 1:
+					System.out.println(lookup);
+
+					while (true) {
+						
+						try {
+							System.out.println(
+									"Do you want to purchase an item(Y,N)?");
+							String y_n = sc.nextLine();
+							
+							if (y_n.equals("y")) {
+								System.out.println("Enter flower id:");
+								int id = sc.nextInt();
+								sc.nextLine();
+								System.out.println("Enter the quantity:");
+								int quantity = sc.nextInt();
+								sc.nextLine();
+								Item myItem = lookup.getItemById(id);
+								myItem.reduceQuantity(quantity);
+								sUser.addItemToTheLibrary(myItem, quantity);
+							}
+
+							else {
+								break;
+							}
+							
+						} catch (Exception e) {
+							System.err.println(e.getMessage());
+							System.err.flush();
+							sc.nextLine();
+						}
+
+					}
+					break;
+
+				case 2:
+					String list = sUser.toString();
+					if (list == null) {
+						System.err.println("Your Shopping Cart is empty.");
+						System.err.flush();
+					}
+
+					else {
+						System.out.println(sUser);
+					}
+
+					break;
+
+				case 3:
+					String bill = sUser.bill();
+
+					if (bill == null) {
+						System.err
+								.println("You don't have any bill currently.");
+						System.err.flush();
+					}
+
+					else {
+						System.out.println(sUser.bill());
+
+					}
+
+					break;
+
+				case 4:
+					return;
+
+				default:
+
+				}
+
+			} catch (Exception e) {
+				System.err.println(e.getMessage());
+				System.err.flush();
+
+			}
 		}
 	}
 
@@ -96,6 +166,7 @@ public class FlowerShop {
 
 			try {
 				option = sc.nextInt();
+				sc.nextLine();
 				switch (option) {
 				case 1:
 
@@ -105,13 +176,13 @@ public class FlowerShop {
 					while (sUser == null) {
 
 						System.out.println("Enter your UserName: ");
-						userName = sc.next();
+						userName = sc.nextLine();
 						String password;
 						System.out.println("Enter your Password: ");
-						password = sc.next();
+						password = sc.nextLine();
 						String password2;
 						System.out.println("Enter your Password again: ");
-						password2 = sc.next();
+						password2 = sc.nextLine();
 
 						sUser = checkSignUp(userName, password, password2,
 								lookup);
@@ -119,7 +190,8 @@ public class FlowerShop {
 					}
 
 					System.err.println("Login Successfully!");
-
+					System.err.flush();
+					shopMenu(lookup);
 					break;
 
 				case 2:
@@ -139,9 +211,13 @@ public class FlowerShop {
 			}
 
 			catch (InvalidInputException e) {
+				System.err.flush();
 				System.err.print(e.getMessage());
+				System.err.flush();
+
 			} catch (InputMismatchException e) {
-				System.err.println("The input is not an integer");
+				System.err.print("The input is not an integer\n");
+				System.err.flush();
 				sc.nextLine();
 			}
 		}

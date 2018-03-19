@@ -252,8 +252,9 @@ public class Lookup {
 		String r = "";
 
 		for (int i = 0; i < storeItemList.length; i++) {
-				r+= i+"-  "+storeItemList[i]+"\n";
+				r+= storeItemList[i]+"\n";
 		} 
+		
 		return r;
 	}
 }

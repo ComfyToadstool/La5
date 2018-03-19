@@ -6,28 +6,27 @@
 
 package edu.wmich.cs1120.StanRitsema.JenniferSmith.LA5;
 
+public class CartItem {
 
-public class CartItem {	
-	
 	private int id;
 	private int quantity;
 	private Item item;
-	
-	public CartItem ( int id, Item item ) {
+
+	public CartItem(int id, Item item) {
 		this.id = id;
 		this.quantity = 0;
 		this.item = item;
 	}
-	
+
 	/**
 	 * 
 	 * @param quantity
-	 * @throws Exception if user send quantity more than the available quantity in the store 
+	 * @throws InvalidInputException
+	 *             Exception if user send quantity more than the available quantity in the
+	 *             store
 	 */
-	
+
 	public void setQuantity(int quantity) throws InvalidInputException {
-		
-		
 		this.quantity = quantity;
 	}
 
@@ -39,6 +38,16 @@ public class CartItem {
 	public void addQuantity(int quantity) {
 
 		this.quantity += quantity;
-	} 
-}
+	}
+	
+	public double getTotal() {
+		return quantity*item.getPrice();
+	}
+	
+	public String toString() {
+		String r = item.getTitle();
+		r += " (Quantity: "+ quantity +"), Price: $"+item.getPrice(quantity)+")";
+		return r;
 
+	}
+}
