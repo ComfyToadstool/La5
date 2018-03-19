@@ -37,12 +37,43 @@ public class FlowerShop {
 
 	}
 
+	public static void shopMenu(Lookup lookup) {
+
+		try {
+			System.out.println(
+					"1- Flowers List! \n" + "2- My Cart \n" + "3- Bill \n"
+							+ "4- Exit \n" + "Select one of these options: \n");
+			int option = sc.nextInt();
+			switch (option) {
+			case 1:
+				
+			case 2:
+			case 3:
+			case 4:
+			default:
+			}
+
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+	}
+
 	/**
 	 * Catch an appropriate type of exception
 	 */
 
 	public static User checkSignUp(String userName, String password1,
 			String password2, Lookup lookup) {
+
+		try {
+
+			return lookup.checkSignUpAuth(userName, password1, password2);
+
+		} catch (InvalidInputException e) {
+			System.err.print(e.getMessage());
+			System.err.flush();
+
+		}
 		return null;
 	}
 
@@ -67,46 +98,54 @@ public class FlowerShop {
 				option = sc.nextInt();
 				switch (option) {
 				case 1:
-					
-					String userName;
-					System.out.println("Enter your UserName: ");
-					userName = sc.next();
-					String password;
-					System.out.println("Enter your Password: ");
-					password = sc.next();
-					String password2;
-					System.out.println("Enter your Password again: ");
-					password2 = sc.next();
 
-					sUser = checkSignUp( userName,  password, password2, lookup );
-					
+					String userName = null;
+					sUser = null;
+
+					while (sUser == null) {
+
+						System.out.println("Enter your UserName: ");
+						userName = sc.next();
+						String password;
+						System.out.println("Enter your Password: ");
+						password = sc.next();
+						String password2;
+						System.out.println("Enter your Password again: ");
+						password2 = sc.next();
+
+						sUser = checkSignUp(userName, password, password2,
+								lookup);
+
+					}
+
+					System.err.println("Login Successfully!");
+
 					break;
-					
+
 				case 2:
-					
+
 					login(lookup);
-					
+
 					break;
-					
+
 				case 3:
-					
+
 					return;
-					
+
 				default:
-					
-					throw new InvalidInputException("Invalid option");
+
+					throw new InvalidInputException("Invalid option\n");
 				}
 			}
 
 			catch (InvalidInputException e) {
-				System.err.println("The input is not an integer");
-			}
-			catch (InputMismatchException e) {
+				System.err.print(e.getMessage());
+			} catch (InputMismatchException e) {
 				System.err.println("The input is not an integer");
 				sc.nextLine();
 			}
 		}
-		
+
 	}
 
 }

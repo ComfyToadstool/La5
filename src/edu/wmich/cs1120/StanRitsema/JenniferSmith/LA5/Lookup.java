@@ -22,9 +22,8 @@ public class Lookup {
 	 * @param password
 	 * @return Return the user object if it exist
 	 * @throws InvalidInputException
-	 *             Exception should be thrown for the following scenarios:
-	 *              1- if username doesn't exist.
-	 *              2- Password doesn't exist
+	 *             Exception should be thrown for the following scenarios: 1- if
+	 *             username doesn't exist. 2- Password doesn’t exist
 	 */
 	public User checkLoginAuth(String userName, String password)
 			throws InvalidInputException {
@@ -67,24 +66,25 @@ public class Lookup {
 	 */
 	public User checkSignUpAuth(String userName, String password1,
 			String password2) throws InvalidInputException {
+
+		for (int i = 0; i < userList.length; i++) {
+
+			if (userList[i].equals(userName)) {
+				throw new InvalidInputException("Username already exists\n");
+			}
+		}
+
 		String message = isValidPassword(password1);
 
 		if (message != null) {
 			throw new InvalidInputException(message);
 		}
-		
+
 		if (!password1.equals(password2)) {
-			throw new InvalidInputException("Passwords don't match");
+			throw new InvalidInputException("Passwords don't match\n");
 
 		}
 
-		for (int i = 0; i < userList.length; i++) {
-
-			if (userList[i].equals(userName)) {
-				throw new InvalidInputException("Username already exists");
-			}
-		}
-		
 		return addUserToTheList(userName, password1);
 
 	}
@@ -107,9 +107,10 @@ public class Lookup {
 		boolean hasDigit = false;
 		boolean hasLower = false;
 		boolean hasUpper = false;
+		boolean hasSpecial = false;
 
 		if (password.length() < 6) {
-			return "Invalid password";
+			return "The password length should be at least 6 characters\n";
 		}
 
 		for (int i = 0; i < password.length(); i++) {
@@ -125,13 +126,36 @@ public class Lookup {
 			else if (Character.isUpperCase(password.charAt(i))) {
 				hasUpper = true;
 			}
+
+			else {
+				hasSpecial = true;
+			}
 		}
 
-		if (hasDigit && hasLower && hasUpper) {
+		if (hasDigit && hasLower && hasUpper && hasSpecial) {
 			return null;
 		}
 
-		return "Invalid password";
+		message = "Password should contain:\n";
+
+		if (!hasLower) {
+			message += "At least one lower case letter.\n";
+		}
+
+		if (!hasUpper) {
+			message += "At least one upper case letter.\n";
+		}
+
+		if (!hasDigit) {
+			message += "At least one number.\n";
+		}
+
+		if (!hasSpecial) {
+			message += "At least one special characters.\n";
+		}
+
+		return message;
+
 	}
 
 	public User[] getUserList() {
@@ -163,7 +187,7 @@ public class Lookup {
 				password);
 		userList = listTwo;
 
-		return listTwo[userList.length];
+		return listTwo[userList.length - 1];
 
 	}
 
@@ -175,7 +199,7 @@ public class Lookup {
 	public User[] createUsers() {
 		User[] list = new User[2];
 
-		// Constructor's arguments: (id, username, password)
+		// Constructor’s arguments: (id, username, password)
 		list[0] = new User(1, "sara", "123");
 		list[1] = new User(2, "adam", "321");
 		return list;
@@ -188,10 +212,10 @@ public class Lookup {
 	 * 
 	 */
 	public Item[] loadItems() {
-		
+
 		Item[] itemList = new Item[10];
-		
-		// Constructor's arguments:(title, quantity, price)
+
+		// Constructor’s arguments:(title, quantity, price)
 		itemList[0] = new Item(1, "Tulip", 10, 3.00);
 		itemList[1] = new Item(2, "Calla", 15, 3.00);
 		itemList[2] = new Item(3, "Gerbera", 15, 2.00);
@@ -221,5 +245,15 @@ public class Lookup {
 
 		return null;
 
+	}
+
+	public String toString() {
+
+		String r = "";
+
+		for (int i = 0; i < storeItemList.length; i++) {
+				r+= i+"-  "+storeItemList[i]+"\n";
+		} 
+		return r;
 	}
 }
