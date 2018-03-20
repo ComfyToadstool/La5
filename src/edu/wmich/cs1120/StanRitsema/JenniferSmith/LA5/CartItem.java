@@ -22,20 +22,25 @@ public class CartItem {
 	 * 
 	 * @param quantity
 	 * @throws InvalidInputException
-	 *             Exception if user send quantity more than the available quantity in the
-	 *             store
+	 *             Exception if user send quantity more than the available
+	 *             quantity in the store
 	 */
 
 	public void setQuantity(int quantity) throws InvalidInputException {
-		
+
 		try {
 			item.reduceQuantity(quantity);
 			this.quantity = quantity;
-		}catch(InvalidInputException e) {
+		} catch (InvalidInputException e) {
+			System.err.flush();
 			System.err.println(e.getMessage());
+			System.err.flush();
 			System.err.println("The available quantity in the store is "
-			+ item.getAvailableQuantity() + " flowers, and your ordered quantity is "
-			+ quantity + " flowers.");
+					+ item.getAvailableQuantity()
+					+ " flowers, and your ordered quantity is " + quantity
+					+ " flowers.");
+			System.err.flush();
+
 		}
 	}
 
@@ -46,16 +51,29 @@ public class CartItem {
 
 	public void addQuantity(int quantity) {
 
-		this.quantity += quantity;
+		try {
+			item.reduceQuantity(quantity);
+			this.quantity += quantity;
+		} catch (InvalidInputException e) {
+			System.err.flush();
+			System.err.println(e.getMessage());
+			System.err.flush();
+			System.err.println("The available quantity in the store is "
+					+ item.getAvailableQuantity()
+					+ " flowers, and your ordered quantity is " + quantity
+					+ " flowers.");
+			System.err.flush();
+		}
 	}
-	
+
 	public double getTotal() {
-		return quantity*item.getPrice();
+		return quantity * item.getPrice();
 	}
-	
+
 	public String toString() {
 		String r = item.getTitle();
-		r += " (Quantity: "+ quantity +"), Price: "+item.getPrice(quantity)+")";
+		r += " (Quantity: " + quantity + "), Price: " + item.getPrice(quantity)
+				+ ")";
 		return r;
 
 	}

@@ -5,7 +5,7 @@
  */
 
 package edu.wmich.cs1120.StanRitsema.JenniferSmith.LA5;
-//
+
 public class User {
 
 	private int id;
@@ -33,18 +33,6 @@ public class User {
 
 	}
 
-	public String toString() {
-
-		String r = "";
-		if (numItems == 0) {
-			return null;
-		}
-		for (int i = 0; i < numItems; i++) {
-			r += cartItems[i] + "\n";
-
-		}
-		return r;
-	}
 
 	public double getTotal() {
 		double total = 0;
@@ -77,7 +65,7 @@ public class User {
 
 	public void addItemToTheLibrary(Item item, int quantity)
 			throws InvalidInputException {
-
+		
 		if (quantity > item.getAvailableQuantity()) {
 			throw new InvalidInputException("This quantity is not available.");
 		}
@@ -85,7 +73,6 @@ public class User {
 		for (int i = 0; i < numItems; i++) {
 			if (item.getID() == cartItems[i].getID()) {
 				cartItems[i].addQuantity(quantity);
-				item.reduceQuantity(quantity);
 				return;
 
 			}
@@ -97,9 +84,28 @@ public class User {
 
 		}
 
-		cartItems[numItems] = new CartItem(quantity, item);
-		item.reduceQuantity(quantity);
+		cartItems[numItems] = new CartItem(item.getID(), item);
+		cartItems[numItems].setQuantity(quantity);
 		++numItems;
+	}
+	
+	public String toString() {
+
+		String r = "";
+		if (numItems == 0) {
+			return null;
+		}
+		
+		int total = 0;
+		
+		for (int i = 0; i < numItems; i++) {
+			r += cartItems[i] + "\n";
+			total += cartItems[i].getTotal();
+		}
+		
+		r += "Total Price: " + Item.formatter.format(total);
+		
+		return r;
 	}
 
 	

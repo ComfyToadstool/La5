@@ -15,9 +15,9 @@ public class FlowerShop {
 	static Scanner sc = new Scanner(System.in);
 
 	/**
-	 * Use a try-catch block in the main method instead of the â€œdefaultâ€� case,
-	 * you should have relevant catch clauses: i. Use an appropriate type of
-	 * exception if the input is not an integer. ii. You need to use a custom
+	 * Use a try-catch block in the main method instead of the â€œdefaultâ€�
+	 * case, you should have relevant catch clauses: i. Use an appropriate type
+	 * of exception if the input is not an integer. ii. You need to use a custom
 	 * Exception (InvalidInputException) when the input is not one of the
 	 * options on the menu.
 	 * 
@@ -34,21 +34,21 @@ public class FlowerShop {
 	 */
 
 	public static void login(Lookup lookup) {
-		
+
 		try {
-			
+
 			System.out.println("Enter your UserName: ");
 			String name = sc.nextLine();
-			
+
 			System.out.println("Enter your Password: ");
 			String pass = sc.nextLine();
-			
+
 			sUser = lookup.checkLoginAuth(name, pass);
-			
-		}catch(InvalidInputException e) {
-			
+
+		} catch (InvalidInputException e) {
+
 			System.err.println(e.getMessage());
-			
+
 		}
 
 	}
@@ -56,27 +56,25 @@ public class FlowerShop {
 	public static void shopMenu(Lookup lookup) {
 		while (true) {
 			try {
-				System.out.println("\n1- Flowers List! \n"
-						+ "2- My Cart \n"
-						+ "3- Bill \n"
-						+ "4- Exit \n"
+				System.out.println("\n1- Flowers List! \n" + "2- My Cart \n"
+						+ "3- Bill \n" + "4- Exit \n"
 						+ "Select one of these options:");
 
 				int option = sc.nextInt();
 				sc.nextLine();
-				
+
 				switch (option) {
 
 				case 1:
 					System.out.println(lookup);
 
 					while (true) {
-						
+
 						try {
 							System.out.println(
 									"Do you want to purchase an item(Y,N)?");
-							String y_n = sc.nextLine();
-							
+							String y_n = sc.nextLine().toLowerCase();
+
 							if (y_n.equals("y")) {
 								System.out.println("Enter flower id:");
 								int id = sc.nextInt();
@@ -85,14 +83,14 @@ public class FlowerShop {
 								int quantity = sc.nextInt();
 								sc.nextLine();
 								Item myItem = lookup.getItemById(id);
-//								myItem.reduceQuantity(quantity);
+								// myItem.reduceQuantity(quantity);
 								sUser.addItemToTheLibrary(myItem, quantity);
 							}
 
 							else {
 								break;
 							}
-							
+
 						} catch (Exception e) {
 							System.err.println(e.getMessage());
 							System.err.flush();
@@ -111,6 +109,16 @@ public class FlowerShop {
 
 					else {
 						System.out.println(sUser);
+						System.out.println(
+								"Do you want to purchase these items(Y,N)?");
+						String y_n = sc.nextLine().toLowerCase();
+						if (y_n.equals("y")) {
+							System.err.flush();
+							System.err.println("\nYour bill is available now!");
+							System.err.flush();
+
+						}
+						
 					}
 
 					break;
@@ -137,6 +145,10 @@ public class FlowerShop {
 				default:
 
 				}
+			} catch (InputMismatchException e) {
+				System.err.println(e.getMessage());
+				System.err.flush();
+				sc.nextLine();
 
 			} catch (Exception e) {
 				System.err.println(e.getMessage());
@@ -166,11 +178,11 @@ public class FlowerShop {
 	}
 
 	/**
-	 * Use a try-catch block in the main menu method instead of the â€œdefaultâ€�
-	 * case, you should have relevant catch clauses: i. Use an appropriate type
-	 * of exception if the input is not an integer. ii. You need to use a custom
-	 * Exception (InvalidInputException) when the input is not one of the
-	 * options on the menu.
+	 * Use a try-catch block in the main menu method instead of the
+	 * â€œdefaultâ€� case, you should have relevant catch clauses: i. Use an
+	 * appropriate type of exception if the input is not an integer. ii. You
+	 * need to use a custom Exception (InvalidInputException) when the input is
+	 * not one of the options on the menu.
 	 * 
 	 * @param args
 	 */
@@ -215,10 +227,10 @@ public class FlowerShop {
 				case 2:
 
 					login(lookup);
-					
-					if( sUser == null ) {
+
+					if (sUser == null) {
 						mainMenu(lookup);
-					}else {
+					} else {
 						shopMenu(lookup);
 					}
 

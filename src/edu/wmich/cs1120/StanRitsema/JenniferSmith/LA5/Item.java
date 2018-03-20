@@ -54,10 +54,12 @@ public class Item {
 
 	
 	public void reduceQuantity(int quantity) throws InvalidInputException {
-
+		
 		if (availableQuantity >= quantity) {
 			availableQuantity -= quantity;
-		} else {
+		} 
+		
+		else {
 			throw new InvalidInputException("This quantity is not available.");
 		}
 
