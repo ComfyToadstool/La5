@@ -6,10 +6,21 @@
 
 package edu.wmich.cs1120.StanRitsema.JenniferSmith.LA5;
 
+/**
+ * Manages store info including user logins and inventory
+ * 
+ * @author Jennifer Smith
+ *
+ */
+
 public class Lookup {
 
 	public User[] userList;
 	public Item[] storeItemList;
+
+	/**
+	 * Construct an instance of lookup
+	 */
 
 	public Lookup() {
 		userList = createUsers();
@@ -18,13 +29,28 @@ public class Lookup {
 
 	/**
 	 * 
+	 * @param item
+	 *            Item number
+	 * @return true if the parameter is a valid item id
+	 */
+
+	public boolean isValidItem(int item) {
+		return item > 0 && item <= storeItemList.length;
+	}
+
+	/**
+	 * Validate parameter username and password for an existing user
+	 * 
 	 * @param userName
+	 *            Users username
 	 * @param password
+	 *            Users password
 	 * @return Return the user object if it exist
 	 * @throws InvalidInputException
 	 *             Exception should be thrown for the following scenarios: 1- if
 	 *             username doesn't exist. 2- Password doesn’t exist
 	 */
+
 	public User checkLoginAuth(String userName, String password)
 			throws InvalidInputException {
 
@@ -50,10 +76,15 @@ public class Lookup {
 	}
 
 	/**
+	 * Validate parameter name and password for a new user account
+	 * 
 	 * @param userName
+	 *            Users username
 	 * @param password1
+	 *            First password entry
 	 * @param password2
-	 * @return
+	 *            Second password entry
+	 * @return User if account is validated
 	 * @throws InvalidInputException
 	 *             Exception should be thrown for the following scenarios: 1. A
 	 *             user is trying to signup using a username that already
@@ -158,20 +189,32 @@ public class Lookup {
 
 	}
 
+	/**
+	 * 
+	 * @return the userlist
+	 */
+
 	public User[] getUserList() {
 		return userList;
 
 	}
 
+	/**
+	 * 
+	 * @param Update
+	 *            the userList
+	 */
 	public void setUserList(User[] userList) {
 		this.userList = userList;
 	}
 
 	/**
+	 * This method add new user to the user array
 	 * 
 	 * @param userName
+	 *            Users username
 	 * @param password
-	 *            This method add new user to the user array
+	 *            Users password
 	 * @return user
 	 */
 	public User addUserToTheList(String userName, String password) {
@@ -247,14 +290,18 @@ public class Lookup {
 
 	}
 
+	/**
+	 * List the store inventory
+	 */
+
 	public String toString() {
 
 		String r = "";
 
 		for (int i = 0; i < storeItemList.length; i++) {
-				r+= storeItemList[i]+"\n";
-		} 
-		
+			r += storeItemList[i] + "\n";
+		}
+
 		return r;
 	}
 }

@@ -6,6 +6,7 @@
 
 package edu.wmich.cs1120.StanRitsema.JenniferSmith.LA5;
 
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -47,7 +48,9 @@ public class FlowerShop {
 
 		} catch (InvalidInputException e) {
 
+			System.err.flush();
 			System.err.println(e.getMessage());
+			System.err.flush();
 
 		}
 
@@ -76,25 +79,43 @@ public class FlowerShop {
 							String y_n = sc.nextLine().toLowerCase();
 
 							if (y_n.equals("y")) {
+
 								System.out.println("Enter flower id:");
 								int id = sc.nextInt();
 								sc.nextLine();
-								System.out.println("Enter the quantity:");
-								int quantity = sc.nextInt();
-								sc.nextLine();
-								Item myItem = lookup.getItemById(id);
-								// myItem.reduceQuantity(quantity);
-								sUser.addItemToTheLibrary(myItem, quantity);
+								if (lookup.isValidItem(id)) {
+
+									System.out.println("Enter the quantity:");
+									int quantity = sc.nextInt();
+									sc.nextLine();
+									Item myItem = lookup.getItemById(id);
+									sUser.addItemToTheLibrary(myItem, quantity);
+
+								} else {
+									System.err.flush();
+									System.err.println(
+											"This flower’s id is not existing!");
+									System.err.flush();
+
+								}
+
 							}
 
 							else {
 								break;
 							}
 
-						} catch (Exception e) {
+						} catch (InputMismatchException e) {
+
+							System.err.flush();
 							System.err.println(e.getMessage());
 							System.err.flush();
 							sc.nextLine();
+
+						} catch (InvalidInputException e) {
+							System.err.println(e.getMessage());
+							System.err.flush();
+
 						}
 
 					}
@@ -118,7 +139,7 @@ public class FlowerShop {
 							System.err.flush();
 
 						}
-						
+
 					}
 
 					break;
@@ -133,29 +154,35 @@ public class FlowerShop {
 					}
 
 					else {
-						System.out.println(sUser.bill());
+						sUser.writeBill();
+						// System.out.println(sUser.bill());
 
 					}
 
 					break;
 
 				case 4:
-					return;
+					System.exit(0);
 
 				default:
 
 				}
+			} catch (IOException e) {
+
+				System.err.flush();
+				System.err.println(e.getMessage());
+				System.err.flush();
+
 			} catch (InputMismatchException e) {
+
+				System.err.flush();
 				System.err.println(e.getMessage());
 				System.err.flush();
 				sc.nextLine();
 
-			} catch (Exception e) {
-				System.err.println(e.getMessage());
-				System.err.flush();
-
 			}
 		}
+
 	}
 
 	/**
@@ -219,6 +246,7 @@ public class FlowerShop {
 
 					}
 
+					System.err.flush();
 					System.err.println("Login Successfully!");
 					System.err.flush();
 					shopMenu(lookup);
@@ -238,7 +266,7 @@ public class FlowerShop {
 
 				case 3:
 
-					return;
+					System.exit(0);
 
 				default:
 
