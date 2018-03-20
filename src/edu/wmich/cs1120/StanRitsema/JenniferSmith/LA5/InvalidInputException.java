@@ -6,6 +6,12 @@
 
 package edu.wmich.cs1120.StanRitsema.JenniferSmith.LA5;
 
+/**
+ * 
+ * @author jennifersmith
+ *
+ */
+
 public class InvalidInputException extends Exception {
 	
 	/**

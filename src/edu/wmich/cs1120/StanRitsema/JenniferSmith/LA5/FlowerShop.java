@@ -10,6 +10,12 @@ import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * 
+ * @author Jennifer Smith
+ *
+ */
+
 public class FlowerShop {
 
 	static User sUser;
@@ -55,6 +61,11 @@ public class FlowerShop {
 		}
 
 	}
+	
+	/**
+	 * 
+	 * @param lookup
+	 */
 
 	public static void shopMenu(Lookup lookup) {
 		while (true) {

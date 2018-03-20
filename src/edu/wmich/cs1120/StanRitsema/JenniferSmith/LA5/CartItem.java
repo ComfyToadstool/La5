@@ -6,12 +6,24 @@
 
 package edu.wmich.cs1120.StanRitsema.JenniferSmith.LA5;
 
+/**
+ * 
+ * @author Jennifer Smith
+ *
+ */
+
 public class CartItem {
 
 	private int id;
 	private int quantity;
 	private Item item;
 
+	/**
+	 * 
+	 * @param id
+	 * @param item
+	 */
+	
 	public CartItem(int id, Item item) {
 		this.id = id;
 		this.quantity = 0;
@@ -44,11 +56,21 @@ public class CartItem {
 		}
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
+	
 	public int getID() {
 
 		return id;
 	}
 
+	/**
+	 * 
+	 * @param quantity
+	 */
+	
 	public void addQuantity(int quantity) {
 
 		try {
@@ -66,6 +88,11 @@ public class CartItem {
 		}
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
+	
 	public double getTotal() {
 		return quantity * item.getPrice();
 	}

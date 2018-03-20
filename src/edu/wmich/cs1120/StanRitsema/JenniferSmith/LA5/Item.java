@@ -41,30 +41,62 @@ public class Item {
 
 	}
 
+	/**
+	 * 
+	 * @return Available quantity
+	 */
+	
 	public int getAvailableQuantity() {
 
 		return availableQuantity;
 	}
 
+	/**
+	 * 
+	 * @return ID
+	 */
+	
 	public int getID() {
 
 		return id;
 	}
 
+	/**
+	 * 
+	 * @return Title
+	 */
+	
 	public String getTitle() {
 
 		return title;
 	}
 
+	/**
+	 * 
+	 * @return Price
+	 */
+	
 	public double getPrice() {
 
 		return price;
 	}
 
+	/**
+	 * 
+	 * @param quantity
+	 * @return
+	 */
+	
 	public String getPrice(int quantity) {
 
 		return formatter.format(quantity * price);
 	}
+	
+	/**
+	 * 
+	 * @param quantity
+	 * @throws InvalidInputException
+	 */
 
 	public void reduceQuantity(int quantity) throws InvalidInputException {
 
@@ -77,6 +109,10 @@ public class Item {
 		}
 
 	}
+	
+	/**
+	 * 
+	 */
 
 	public String toString() {
 		return (getID() + " -  " + getTitle() + ",  " + "Price: "

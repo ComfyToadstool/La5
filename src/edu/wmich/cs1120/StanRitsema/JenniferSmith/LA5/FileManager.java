@@ -11,6 +11,12 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * 
+ * @author Jennifer Smith
+ *
+ */
+
 public class FileManager {
 
 	// File name equals to username
@@ -19,6 +25,11 @@ public class FileManager {
 	FileWriter output;
 	FileReader input;
 
+	/**
+	 * 
+	 * @param fileName
+	 */
+	
 	public FileManager(String fileName) {
 
 		this.fileName = fileName;
