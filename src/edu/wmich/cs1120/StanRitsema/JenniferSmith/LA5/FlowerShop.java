@@ -15,7 +15,7 @@ public class FlowerShop {
 	static Scanner sc = new Scanner(System.in);
 
 	/**
-	 * Use a try-catch block in the main method instead of the “default” case,
+	 * Use a try-catch block in the main method instead of the â€œdefaultâ€� case,
 	 * you should have relevant catch clauses: i. Use an appropriate type of
 	 * exception if the input is not an integer. ii. You need to use a custom
 	 * Exception (InvalidInputException) when the input is not one of the
@@ -34,14 +34,32 @@ public class FlowerShop {
 	 */
 
 	public static void login(Lookup lookup) {
+		
+		try {
+			
+			System.out.println("Enter your UserName: ");
+			String name = sc.nextLine();
+			
+			System.out.println("Enter your Password: ");
+			String pass = sc.nextLine();
+			
+			sUser = lookup.checkLoginAuth(name, pass);
+			
+		}catch(InvalidInputException e) {
+			
+			System.err.println(e.getMessage());
+			
+		}
 
 	}
 
 	public static void shopMenu(Lookup lookup) {
 		while (true) {
 			try {
-				System.out.println("\n1- Flowers List! \n" + "2- My Cart \n"
-						+ "3- Bill \n" + "4- Exit \n"
+				System.out.println("\n1- Flowers List! \n"
+						+ "2- My Cart \n"
+						+ "3- Bill \n"
+						+ "4- Exit \n"
 						+ "Select one of these options:");
 
 				int option = sc.nextInt();
@@ -148,7 +166,7 @@ public class FlowerShop {
 	}
 
 	/**
-	 * Use a try-catch block in the main menu method instead of the “default”
+	 * Use a try-catch block in the main menu method instead of the â€œdefaultâ€�
 	 * case, you should have relevant catch clauses: i. Use an appropriate type
 	 * of exception if the input is not an integer. ii. You need to use a custom
 	 * Exception (InvalidInputException) when the input is not one of the
@@ -197,6 +215,12 @@ public class FlowerShop {
 				case 2:
 
 					login(lookup);
+					
+					if( sUser == null ) {
+						mainMenu(lookup);
+					}else {
+						shopMenu(lookup);
+					}
 
 					break;
 
