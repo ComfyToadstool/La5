@@ -27,7 +27,16 @@ public class CartItem {
 	 */
 
 	public void setQuantity(int quantity) throws InvalidInputException {
-		this.quantity = quantity;
+		
+		try {
+			item.reduceQuantity(quantity);
+			this.quantity = quantity;
+		}catch(InvalidInputException e) {
+			System.err.println(e.getMessage());
+			System.err.println("The available quantity in the store is "
+			+ item.getAvailableQuantity() + " flowers, and your ordered quantity is "
+			+ quantity + " flowers.");
+		}
 	}
 
 	public int getID() {
@@ -46,7 +55,7 @@ public class CartItem {
 	
 	public String toString() {
 		String r = item.getTitle();
-		r += " (Quantity: "+ quantity +"), Price: $"+item.getPrice(quantity)+")";
+		r += " (Quantity: "+ quantity +"), Price: "+item.getPrice(quantity)+")";
 		return r;
 
 	}

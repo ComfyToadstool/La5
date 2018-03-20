@@ -62,7 +62,7 @@ public class User {
 	}
 
 	public boolean isFull() {
-		return numItems == cartItems.length;
+		return (numItems == cartItems.length);
 	}
 
 	/**
@@ -79,7 +79,7 @@ public class User {
 			throws InvalidInputException {
 
 		if (quantity > item.getAvailableQuantity()) {
-			throw new InvalidInputException("Not enough items");
+			throw new InvalidInputException("This quantity is not available.");
 		}
 
 		for (int i = 0; i < numItems; i++) {
@@ -92,7 +92,8 @@ public class User {
 		}
 
 		if (isFull()) {
-			throw new InvalidInputException("Cannot have more than 3 items");
+			throw new InvalidInputException("Cannot have more than 3 differnt"
+					+ " types of the flowers");
 
 		}
 

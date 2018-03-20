@@ -77,7 +77,7 @@ public class FileManager {
 
 		} catch (FileNotFoundException f) {
 
-			System.err.println(fileName + " does not have a bill yet!");
+			System.err.println("You do not have any bill currently.");
 
 		} catch (IOException e) {
 

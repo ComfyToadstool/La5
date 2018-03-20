@@ -85,7 +85,7 @@ public class FlowerShop {
 								int quantity = sc.nextInt();
 								sc.nextLine();
 								Item myItem = lookup.getItemById(id);
-								myItem.reduceQuantity(quantity);
+//								myItem.reduceQuantity(quantity);
 								sUser.addItemToTheLibrary(myItem, quantity);
 							}
 
