@@ -11,6 +11,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
+ * Contains the main. Menu with the user in flower shop.
  * 
  * @author Jennifer Smith
  *
@@ -22,14 +23,15 @@ public class FlowerShop {
 	static Scanner sc = new Scanner(System.in);
 
 	/**
-	 * Use a try-catch block in the main method instead of the â€œdefaultâ€�
-	 * case, you should have relevant catch clauses: i. Use an appropriate type
-	 * of exception if the input is not an integer. ii. You need to use a custom
+	 * Use a try-catch block in the main method instead of the default case, you
+	 * should have relevant catch clauses: i. Use an appropriate type of
+	 * exception if the input is not an integer. ii. You need to use a custom
 	 * Exception (InvalidInputException) when the input is not one of the
 	 * options on the menu.
 	 * 
 	 * @param args
 	 */
+
 	public static void main(String[] args) {
 		FlowerShop myShop = new FlowerShop();
 		Lookup myLookup = new Lookup();
@@ -37,9 +39,12 @@ public class FlowerShop {
 	}
 
 	/**
-	 * Catch an appropriate type of exception
+	 * Menu to login existing user
+	 * 
+	 * @param lookup
+	 *            instance of lookup for the flower shop
+	 * 
 	 */
-
 	public static void login(Lookup lookup) {
 
 		try {
@@ -61,10 +66,13 @@ public class FlowerShop {
 		}
 
 	}
-	
+
 	/**
+	 * Menu for flower shop
 	 * 
 	 * @param lookup
+	 *            instance of lookup for the flower shop
+	 * 
 	 */
 
 	public static void shopMenu(Lookup lookup) {
@@ -197,7 +205,12 @@ public class FlowerShop {
 	}
 
 	/**
-	 * Catch an appropriate type of exception
+	 * Sign up a new user
+	 * @param userName Users username
+	 * @param password1 Users first password entry
+	 * @param password2 Users second password entry
+	 * @param lookup instance of flower shop lookup
+	 * @return user
 	 */
 
 	public static User checkSignUp(String userName, String password1,
@@ -216,14 +229,20 @@ public class FlowerShop {
 	}
 
 	/**
-	 * Use a try-catch block in the main menu method instead of the
-	 * â€œdefaultâ€� case, you should have relevant catch clauses: i. Use an
-	 * appropriate type of exception if the input is not an integer. ii. You
-	 * need to use a custom Exception (InvalidInputException) when the input is
-	 * not one of the options on the menu.
+	 * Use a try-catch block in the main menu method instead of the default
+	 * case, you should have relevant catch clauses: i. Use an appropriate type
+	 * of exception if the input is not an integer. ii. You need to use a custom
+	 * Exception (InvalidInputException) when the input is not one of the
+	 * options on the menu.
 	 * 
 	 * @param args
 	 */
+	
+	/**
+	 * Login menu
+	 * @param lookup insance of flower shop lookup 
+	 */
+	
 	public static void mainMenu(Lookup lookup) {
 		int option;
 		while (true) {

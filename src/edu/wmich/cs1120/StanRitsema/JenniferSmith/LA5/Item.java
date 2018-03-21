@@ -27,10 +27,10 @@ public class Item {
 	
 	/**
 	 * Construct a store item
-	 * @param id Item
-	 * @param title
-	 * @param quantity
-	 * @param price
+	 * @param id Item Items id
+	 * @param title Items name
+	 * @param quantity Number of items in inventory
+	 * @param price Item price
 	 */
 	
 	public Item(int id, String title, int quantity, double price) {
@@ -82,9 +82,9 @@ public class Item {
 	}
 
 	/**
-	 * 
+	 * Return a string of the price times the quantity
 	 * @param quantity
-	 * @return
+	 * @return a string of the price times the quantity
 	 */
 	
 	public String getPrice(int quantity) {
@@ -93,9 +93,9 @@ public class Item {
 	}
 	
 	/**
-	 * 
+	 * Reduce the available quantity by the parameter quantity
 	 * @param quantity
-	 * @throws InvalidInputException
+	 * @throws InvalidInputException if there's an insufficient quantity
 	 */
 
 	public void reduceQuantity(int quantity) throws InvalidInputException {
@@ -111,7 +111,7 @@ public class Item {
 	}
 	
 	/**
-	 * 
+	 * Create a string of the item description 
 	 */
 
 	public String toString() {

@@ -12,6 +12,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
+ * Manage system support for bills
  * 
  * @author Jennifer Smith
  *
@@ -26,10 +27,12 @@ public class FileManager {
 	FileReader input;
 
 	/**
+	 * Construct an instance fileManager
 	 * 
 	 * @param fileName
+	 *            name of billing file
 	 */
-	
+
 	public FileManager(String fileName) {
 
 		this.fileName = fileName;
@@ -37,6 +40,7 @@ public class FileManager {
 	}
 
 	/**
+	 * Create the bill file using the parameter total
 	 * 
 	 * @param total
 	 *            Catch an appropriate type of exception if there is a problem
@@ -73,6 +77,7 @@ public class FileManager {
 	 * 
 	 * @throws IOException
 	 */
+	
 	public void readBill() throws IOException {
 
 		try {

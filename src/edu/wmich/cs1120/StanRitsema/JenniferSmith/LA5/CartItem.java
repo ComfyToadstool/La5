@@ -7,6 +7,7 @@
 package edu.wmich.cs1120.StanRitsema.JenniferSmith.LA5;
 
 /**
+ * Describes an item in the user shopping cart
  * 
  * @author Jennifer Smith
  *
@@ -19,11 +20,14 @@ public class CartItem {
 	private Item item;
 
 	/**
+	 * Construct a cart item
 	 * 
 	 * @param id
+	 *            Item id
 	 * @param item
+	 *            The item
 	 */
-	
+
 	public CartItem(int id, Item item) {
 		this.id = id;
 		this.quantity = 0;
@@ -31,8 +35,10 @@ public class CartItem {
 	}
 
 	/**
+	 * Set the quantity
 	 * 
 	 * @param quantity
+	 *            number of this item in the cart
 	 * @throws InvalidInputException
 	 *             Exception if user send quantity more than the available
 	 *             quantity in the store
@@ -58,19 +64,21 @@ public class CartItem {
 
 	/**
 	 * 
-	 * @return
+	 * @return item id
 	 */
-	
+
 	public int getID() {
 
 		return id;
 	}
 
 	/**
+	 * Increment the quantity
 	 * 
 	 * @param quantity
+	 *            number to increment the quantity
 	 */
-	
+
 	public void addQuantity(int quantity) {
 
 		try {
@@ -89,13 +97,18 @@ public class CartItem {
 	}
 
 	/**
+	 * Return the total of this items in the shopping cart
 	 * 
-	 * @return
+	 * @return the total of this items in the shopping cart
 	 */
-	
+
 	public double getTotal() {
 		return quantity * item.getPrice();
 	}
+
+	/**
+	 * return a string representation of this item
+	 */
 
 	public String toString() {
 		String r = item.getTitle();
