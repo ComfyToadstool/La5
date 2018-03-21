@@ -154,7 +154,8 @@ public class FlowerShop {
 						String y_n = sc.nextLine().toLowerCase();
 						if (y_n.equals("y")) {
 							System.err.flush();
-							System.err.println("\nYour bill is available now!");
+							sUser.writeBill();
+//							System.err.println("\nYour bill is available now!");
 							System.err.flush();
 
 						}
@@ -164,20 +165,20 @@ public class FlowerShop {
 					break;
 
 				case 3:
-					String bill = sUser.bill();
-
-					if (bill == null) {
-						System.err
-								.println("You don't have any bill currently.");
-						System.err.flush();
-					}
-
-					else {
-						sUser.writeBill();
-						// System.out.println(sUser.bill());
-
-					}
-
+//					String bill = sUser.bill();
+//
+//					if (bill == null) {
+//						System.err
+//								.println("bill was not created.");
+//						System.err.flush();
+//					}
+//
+//					else {
+//						//sUser.writeBill();
+//						// System.out.println(sUser.bill());
+//						sUser.readBill();
+//					}
+					sUser.readBill();
 					break;
 
 				case 4:

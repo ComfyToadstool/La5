@@ -98,6 +98,15 @@ public class User {
 		}
 		return "Your bill balance is " + Item.formatter.format(getTotal());
 	}
+	
+	/**
+	 * Read the current bill.  Execeptions handled in FileManager class.
+	 * 
+	 * @throws IOException
+	 */
+	public void readBill() throws IOException {
+		fileManager.readBill();
+	}
 
 	/**
 	 * Write the bill to the file
