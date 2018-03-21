@@ -12,7 +12,7 @@ import java.io.*;
  * Manage system support for bills
  * 
  * @author Jennifer Smith
- *
+ * @author Stan Ritsema
  */
 
 public class FileManager {

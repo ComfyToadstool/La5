@@ -14,6 +14,7 @@ import java.util.Scanner;
  * Contains the main. Menu with the user in flower shop.
  * 
  * @author Jennifer Smith
+ * @author Stan Ritsema
  *
  */
 

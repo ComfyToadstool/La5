@@ -10,7 +10,7 @@ package edu.wmich.cs1120.StanRitsema.JenniferSmith.LA5;
  * Describes an item in the user shopping cart
  * 
  * @author Jennifer Smith
- *
+ * @author Stan Ritsema
  */
 
 public class CartItem {

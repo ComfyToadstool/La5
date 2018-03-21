@@ -12,7 +12,7 @@ import java.io.IOException;
  * Flower shop customer manages username, password, and shopping cart
  * 
  * @author Jennifer Smith
- *
+ * @author Stan Ritsema
  */
 
 public class User {
@@ -100,7 +100,7 @@ public class User {
 	}
 	
 	/**
-	 * Read the current bill.  Execeptions handled in FileManager class.
+	 * Read the current bill.  Exceptions handled in FileManager class.
 	 * 
 	 * @throws IOException
 	 */

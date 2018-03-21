@@ -12,7 +12,7 @@ import java.text.NumberFormat;
  * Describes a store item
  * 
  * @author Jennifer Smith
- *
+ * @author Stan Ritsema
  */
 
 public class Item {

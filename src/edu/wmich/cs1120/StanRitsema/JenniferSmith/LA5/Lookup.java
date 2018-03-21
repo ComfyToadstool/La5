@@ -10,7 +10,7 @@ package edu.wmich.cs1120.StanRitsema.JenniferSmith.LA5;
  * Manages store info including user logins and inventory
  * 
  * @author Jennifer Smith
- *
+ * @author Stan Ritsema
  */
 
 public class Lookup {
