@@ -6,10 +6,7 @@
 
 package edu.wmich.cs1120.StanRitsema.JenniferSmith.LA5;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * Manage system support for bills
@@ -35,7 +32,7 @@ public class FileManager {
 
 	public FileManager(String fileName) {
 
-		this.fileName = fileName;
+		this.fileName = fileName + ".txt";
 
 	}
 
@@ -50,12 +47,16 @@ public class FileManager {
 	public void createBillFile(double total) throws IOException {
 
 		try {
+			
+			File userBill = new File(fileName);
 
 			output = new FileWriter(fileName);
 
 			output.write("Your bill balance is $" + total);
 
 			System.err.println("Your bill is available now!");
+			
+			output.close();
 
 		} catch (IOException e) {
 
@@ -82,14 +83,23 @@ public class FileManager {
 
 		try {
 
-			input = new FileReader(fileName + ".txt");
+			input = new FileReader(fileName);
+			
+			BufferedReader bInput = new BufferedReader(input);
 
-			int place;
-			while ((place = input.read()) != -1) {
-				System.err.print((char) place);
+			String line;
+			
+			while( (line = bInput.readLine()) != null) {
+				System.err.println(line);
 			}
+//			int place;
+//			while ((place = input.read()) != -1) {
+//				System.err.print((char) place);
+//			}
 
 			System.out.println();
+			
+			bInput.close();
 
 		} catch (FileNotFoundException f) {
 
