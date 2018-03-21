@@ -286,9 +286,7 @@ public class FlowerShop {
 
 					login(lookup);
 
-					if (sUser == null) {
-						mainMenu(lookup);
-					} else {
+					if (sUser != null) {
 						shopMenu(lookup);
 					}
 
