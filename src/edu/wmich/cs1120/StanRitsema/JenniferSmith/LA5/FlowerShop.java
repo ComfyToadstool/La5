@@ -225,15 +225,6 @@ public class FlowerShop {
 		return null;
 	}
 
-	/**
-	 * Use a try-catch block in the main menu method instead of the default
-	 * case, you should have relevant catch clauses: i. Use an appropriate type
-	 * of exception if the input is not an integer. ii. You need to use a custom
-	 * Exception (InvalidInputException) when the input is not one of the
-	 * options on the menu.
-	 * 
-	 * @param args
-	 */
 	
 	/**
 	 * Login menu
@@ -317,6 +308,14 @@ public class FlowerShop {
 
 	}
 	
+	/**
+	 * Converts a String into an int and returns it if able.
+	 * If not, throws an appropriate exception w/ message.
+	 * 
+	 * @param entry
+	 * @return
+	 * @throws InvalidInputException
+	 */
 	public static int convert(String entry) throws InvalidInputException {
 
 		try {
