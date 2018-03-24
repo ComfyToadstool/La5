@@ -104,7 +104,7 @@ public class FlowerShop {
 
 				} else {
 					throw new InvalidInputException(
-							"This flower's id is not existing!");
+							"This flower's id is not existing!\n");
 				}
 				return true;
 

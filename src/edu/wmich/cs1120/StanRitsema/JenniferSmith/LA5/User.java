@@ -161,8 +161,8 @@ public class User {
 
 		if (isFull()) {
 			throw new InvalidInputException(
-					"You cannot have more than 3 differnt"
-							+ " types of the flowers");
+					"You cannot have more than three different"
+							+ " types of the flowers\n");
 
 		}
 
@@ -177,7 +177,7 @@ public class User {
 	
 	public String toString() {
 
-		String r = "";
+		String r = "\n";
 		if (numItems == 0) {
 			return null;
 		}
@@ -189,9 +189,9 @@ public class User {
 			total += cartItems[i].getTotal();
 		}
 
-		r += "Total Price: " + Item.formatter.format(total);
+		r += "\nTotal Price: " + Item.formatter.format(total);
 
-		return r;
+		return r + "\n";
 	}
 
 }

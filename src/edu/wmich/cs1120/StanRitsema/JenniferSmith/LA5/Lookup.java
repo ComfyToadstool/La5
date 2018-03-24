@@ -296,7 +296,7 @@ public class Lookup {
 
 	public String toString() {
 
-		String r = "";
+		String r = "\n";
 
 		for (int i = 0; i < storeItemList.length; i++) {
 			r += storeItemList[i] + "\n";
