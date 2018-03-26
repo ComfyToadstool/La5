@@ -48,8 +48,6 @@ public class FileManager {
 
 		try {
 			
-			File userBill = new File(fileName);
-
 			output = new FileWriter(fileName);
 
 			output.write("Your bill balance is $" + total);
@@ -92,10 +90,6 @@ public class FileManager {
 			while( (line = bInput.readLine()) != null) {
 				System.err.println(line);
 			}
-//			int place;
-//			while ((place = input.read()) != -1) {
-//				System.err.print((char) place);
-//			}
 
 			System.out.println();
 			
