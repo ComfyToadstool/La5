@@ -111,6 +111,7 @@ public class FlowerShop {
 			}else if(y_n.equals("n")){
 				return false;
 			}else {
+				// Doesn't return false, so keeps the loop going
 				throw new InvalidInputException("Invalid option");
 			}
 
