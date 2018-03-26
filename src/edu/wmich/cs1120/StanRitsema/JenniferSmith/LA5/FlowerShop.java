@@ -234,6 +234,7 @@ public class FlowerShop {
 	
 	public static void mainMenu(Lookup lookup) throws IOException {
 		int option;
+		// condition not used to exit
 		while (true) {
 
 			System.out.println("Welcome to our Flowers Shop!" + "\n1- SignUp \n"
